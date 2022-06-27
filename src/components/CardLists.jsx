@@ -6,6 +6,12 @@ import '../App.css'
 
 
 const CardLists = () => {
+  const [input, setInput] = useState('')
+
+  function handleInput(event){
+    setInput(event.target.value)
+    console.log(input)
+  }
 
  const [dvd, setDvd] = useState(false)
  const [furniture, setFurniture] = useState(false)
@@ -81,14 +87,14 @@ useEffect(()=>{
         
       }} onSubmit={handleSubmit}>
         <label className='inputs' htmlFor="east" id='SKU'>SKU :
-        <input type="text" className='text' />
+        <input type="text" className='text' onChange={handleInput} />
         </label>
         
         <label htmlFor="east" id='name'>NAME :
-        <input type="text" className='text' />
+        <input type="text" className='text' onChange={handleInput}/>
         </label>
        <label htmlFor="east" id='price'> PRICE :
-        <input type="text"  className='text'/>
+        <input type="text"  className='text' onChange={handleInput}/>
         </label>
         
         <select value={type} onChange={handleChange} style={{
@@ -101,20 +107,25 @@ useEffect(()=>{
           <option value="Furniture">Furniture</option>
           <option value="Book">Book</option>
           </select>
+           {dvd&& <h6>Enter Size</h6>}
           {dvd && <label htmlFor="east" id='name'>Size(MB)
-        <input type="text" className='text' />
+          
+        <input type="text" className='text'  onChange={handleInput}/>
         </label>}
+        
        {furniture &&<label htmlFor="east" id='price'> Height(CM)
-        <input type="text"  className='text'/>
+        <input type="text"  className='text' onChange={handleInput}/>
         </label>}
+        {furniture && <h6>Please Enter a specific width</h6>}
         {furniture&&<label htmlFor="east" id='name'>Width(CM)
-        <input type="text" className='text' />
+        <input type="text" className='text' onChange={handleInput} />
         </label>}
        {furniture &&<label htmlFor="east" id='price'> Length(CM)
-        <input type="text"  className='text'/>
+        <input type="text"  className='text'  onChange={handleInput}/>
         </label>}
+        {book && <h6>No author name</h6>}
         {book &&<label htmlFor="east" id='name'>Weight(KG)
-        <input type="text" className='text' />
+        <input type="text" className='text'  onChange={handleInput}/>
         </label>}
         
       </form>
