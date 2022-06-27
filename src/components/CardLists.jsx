@@ -18,7 +18,7 @@ const CardLists = () => {
         [event.target.name]: event.target.value
       }
     })
-    console.log(input)
+    
   }
 
  const [dvd, setDvd] = useState(false)
@@ -36,8 +36,9 @@ useEffect(()=>{
     setType(event.target.value);
   }
   
-  function handleSubmit(e){
+  function handleSubmit(e,){
     e.preventDefault();
+    console.log(input)
 
   }
   
@@ -69,9 +70,10 @@ useEffect(()=>{
         borderRadius:'5px',
         background:'transparent',
         color:'red',
+        
 
           
-      }}>Cancel</button>
+      }} onClick={handleSubmit}>Cancel</button>
       <button style={{
         outline:'none',
         border:'1px solid lightblue',
@@ -82,7 +84,7 @@ useEffect(()=>{
         background:'transparent',
        
         
-      }} > Save</button>
+      }} form="product_form"> Save</button>
       </div>
       </div>
       
@@ -93,7 +95,7 @@ useEffect(()=>{
         maxWidth: '1200px',
         marginLeft:'20px',
         
-      }} onSubmit={handleSubmit}>
+      }} onSubmit={handleSubmit} id="product_form">
         <label className='inputs' htmlFor="east" id='SKU'>SKU :
         <input type="text" className='text' onChange={handleInput}name="sku"/>
         </label>
