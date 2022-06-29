@@ -8,8 +8,7 @@ import '../App.css'
 
 const CardLists = () => {
   const [input, setInput] = useState({
-    sku: '', name: '', price: '', size: '', height:'',
-    width: '', length:'', weight: '',
+    sku: '', name: '', price: '', 
   })
 
   function handleInput(event){
@@ -20,7 +19,7 @@ const CardLists = () => {
       }
       
     })
-    axios.post('http://localhost:8080/api/product/save', input)
+  
   }
 
  const [dvd, setDvd] = useState(false)
@@ -38,9 +37,10 @@ useEffect(()=>{
     setType(event.target.value);
   }
   
-  function handleSubmit(e,){
-    e.preventDefault();
-    console.log(input)
+  function handleSubmit(e){
+    e.preventDefault()
+    axios.post('http://localhost:8080/api/product/save', input)
+    console.log(input);
 
   }
   
