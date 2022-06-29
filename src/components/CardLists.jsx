@@ -1,6 +1,7 @@
 
 import React, {useState} from 'react'
 import { useEffect } from 'react'
+import axios from 'axios'
 
 import '../App.css'
 
@@ -17,8 +18,9 @@ const CardLists = () => {
         ...prevFormData,
         [event.target.name]: event.target.value
       }
+      
     })
-    
+    axios.post('http://localhost:8080/api/product/save', input)
   }
 
  const [dvd, setDvd] = useState(false)
