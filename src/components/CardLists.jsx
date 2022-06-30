@@ -8,7 +8,7 @@ import '../App.css'
 
 const CardLists = () => {
   const [input, setInput] = useState({
-    sku: '', name: '', price: '', 
+    sku: '', name: '', price: ''
   })
 
   function handleInput(event){
@@ -39,7 +39,7 @@ useEffect(()=>{
   
   function handleSubmit(e){
     e.preventDefault()
-    axios.post('http://localhost:8080/api/product/save', input)
+    axios.post('http://localhost:8080/api/products', input)
     console.log(input);
 
   }
@@ -99,14 +99,14 @@ useEffect(()=>{
         
       }} onSubmit={handleSubmit} id="product_form">
         <label className='inputs' htmlFor="east" id='SKU'>SKU :
-        <input type="text" className='text' onChange={handleInput}name="sku"/>
+        <input type="text" className='text' onChange={handleInput}name="sku" required/>
         </label>
         
         <label htmlFor="east" id='name'>NAME :
-        <input type="text" className='text' onChange={handleInput} name="name"/>
+        <input type="text" className='text' onChange={handleInput} name="name" required/>
         </label>
        <label htmlFor="east" id='price'> PRICE :
-        <input type="text"  className='text' onChange={handleInput}name="price"/>
+        <input type="text"  className='text' onChange={handleInput}name="price" required/>
         </label>
         
         <select value={type} onChange={handleChange} style={{
@@ -120,24 +120,24 @@ useEffect(()=>{
           <option value="Book">Book</option>
           </select>
            {dvd&& <h6>Enter Size</h6>}
-          {dvd && <label htmlFor="east" id='name'>Size(MB)
+          {dvd && <label htmlFor="east" id='name' >Size(MB)
           
-        <input type="text" className='text'  onChange={handleInput} name="size"/>
+        <input type="text" className='text'  onChange={handleInput} name="size" disabled/>
         </label>}
         
        {furniture &&<label htmlFor="east" id='price'> Height(CM)
-        <input type="text"  className='text' onChange={handleInput} name="height"/>
+        <input type="text"  className='text' onChange={handleInput} name="height" required/>
         </label>}
         {furniture && <h6>Please Enter a specific width</h6>}
         {furniture&&<label htmlFor="east" id='name'>Width(CM)
-        <input type="text" className='text' onChange={handleInput}name="width" />
+        <input type="text" className='text' onChange={handleInput}name="width" required />
         </label>}
        {furniture &&<label htmlFor="east" id='price'> Length(CM)
-        <input type="text"  className='text'  onChange={handleInput} name="length"/>
+        <input type="text"  className='text'  onChange={handleInput} name="length" required/>
         </label>}
         {book && <h6>No author name</h6>}
         {book &&<label htmlFor="east" id='name'>Weight(KG)
-        <input type="text" className='text'  onChange={handleInput} name="weight"/>
+        <input type="text" className='text'  onChange={handleInput} name="weight" required/>
         </label>}
         
       </form>
