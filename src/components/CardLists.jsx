@@ -8,7 +8,7 @@ import '../App.css'
 
 const CardLists = () => {
   const [input, setInput] = useState({
-    sku: '', name: '', price: ''
+    sku: 0, name: '', price: 0
   })
 
   function handleInput(event){
@@ -39,8 +39,11 @@ useEffect(()=>{
   
   function handleSubmit(e){
     e.preventDefault()
-    axios.post('http://localhost:8080/api/products', input)
-    console.log(input);
+    axios.post('http://localhost:8080/product/create.php', input)
+    .then(res => {
+      console.log(res.data)
+    })
+   // console.log(input);
 
   }
   
@@ -99,14 +102,14 @@ useEffect(()=>{
         
       }} onSubmit={handleSubmit} id="product_form">
         <label className='inputs' htmlFor="east" id='SKU'>SKU :
-        <input type="text" className='text' onChange={handleInput}name="sku" required/>
+        <input type="text" className='text' onChange={handleInput} name="sku" required/>
         </label>
         
         <label htmlFor="east" id='name'>NAME :
         <input type="text" className='text' onChange={handleInput} name="name" required/>
         </label>
        <label htmlFor="east" id='price'> PRICE :
-        <input type="text"  className='text' onChange={handleInput}name="price" required/>
+        <input type="text"  className='text' onChange={handleInput} name="price" required/>
         </label>
         
         <select value={type} onChange={handleChange} style={{
